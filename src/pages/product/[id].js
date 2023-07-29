@@ -2,7 +2,6 @@ import Layout from '@/components/ui/Layout';
 import Image from 'next/image';
 
 function ProductDetailPage({ product }) {
-  console.log(product);
   return (
     <Layout>
       <section className="my-16">

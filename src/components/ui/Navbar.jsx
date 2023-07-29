@@ -77,7 +77,9 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-primary">Build PC</a>
+        <Link href="/pcBuilder" className="btn btn-primary">
+          Build PC
+        </Link>
       </div>
     </div>
   );
