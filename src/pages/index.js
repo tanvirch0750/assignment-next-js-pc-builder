@@ -7,7 +7,7 @@ export default function Home({ featuredProducts, featuredCategory }) {
   return (
     <Layout pageName="home">
       <HeroBanner />
-      <main className="min-h-screen mx-auto max-w-6xl px-3 py-12">
+      <main className="min-h-screen mx-auto max-w-7xl px-3 py-12">
         <section>
           <h1 className="text-center text-4xl text-primary font-medium">
             Featured Components

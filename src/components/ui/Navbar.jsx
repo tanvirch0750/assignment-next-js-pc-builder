@@ -1,4 +1,22 @@
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
 function Navbar() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      // Replace this with your actual API call to fetch all categories.
+      const response = await fetch(
+        'https://pc-builder-backend-three.vercel.app/api/v1/category?page=1&limit=20'
+      );
+      const categoriesData = await response.json();
+      setCategories(categoriesData);
+    }
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -24,21 +42,14 @@ function Navbar() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
+              <a>Categories</a>
+              <ul className="p-2 z-10">
+                {categories?.data?.map((category) => (
+                  <li key={category?.id}>
+                    <Link href={`/${category?.id}`}>{category?.category}</Link>
+                  </li>
+                ))}
               </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
             </li>
           </ul>
         </div>
@@ -49,13 +60,12 @@ function Navbar() {
           <li tabIndex={0}>
             <details>
               <summary className="text-lg font-semibold">Categories</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
+              <ul className="p-2 z-10 w-80">
+                {categories?.data?.map((category) => (
+                  <li key={category?.id}>
+                    <Link href={`/${category?.id}`}>{category?.category}</Link>
+                  </li>
+                ))}
               </ul>
             </details>
           </li>
