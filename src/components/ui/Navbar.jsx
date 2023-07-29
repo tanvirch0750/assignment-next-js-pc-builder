@@ -53,7 +53,12 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn normal-case text-xl text-primary font-bold">TechBD</a>
+        <Link
+          href="/"
+          className="btn normal-case text-xl text-primary font-bold"
+        >
+          TechBD
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
