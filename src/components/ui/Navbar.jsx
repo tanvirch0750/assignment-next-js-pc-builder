@@ -81,11 +81,17 @@ function Navbar() {
       <div className="navbar-end flex gap-2">
         {session?.user ? (
           <>
-            <Link href="/pcBuilder" className="btn btn-primary">
+            <Link
+              href="/pcBuilder"
+              className="btn btn-xs btn-primary md:btn-md"
+            >
               PC Builder
             </Link>
 
-            <button onClick={() => signOut()} className="btn btn-error">
+            <button
+              onClick={() => signOut()}
+              className="btn btn-error btn-xs md:btn-md"
+            >
               Logout
             </button>
           </>

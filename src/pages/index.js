@@ -7,22 +7,22 @@ export default function Home({ featuredProducts, featuredCategory }) {
   return (
     <Layout pageName="home">
       <HeroBanner />
-      <main className="min-h-screen mx-auto max-w-7xl px-3 py-12">
+      <main className="min-h-screen mx-auto max-w-7xl px-3 py-8 md:py-12">
         <section>
-          <h1 className="text-center text-4xl text-primary font-medium">
+          <h1 className="text-center text-2xl md:text-4xl text-primary font-medium">
             Featured Components
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-0 md:mt-12">
             {featuredProducts?.map((product) => (
               <FeaturedProductCard key={product.id} product={product} />
             ))}
           </div>
         </section>
-        <section className="my-16">
-          <h1 className="text-center text-4xl text-primary font-medium">
+        <section className="md:my-16 my-6">
+          <h1 className="text-center text-2xl md:text-4xl text-primary font-medium">
             Featured Categories
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 mt-4 md:mt-12">
             {featuredCategory?.map((category) => (
               <FeaturedCategoryCard category={category} key={category.id} />
             ))}

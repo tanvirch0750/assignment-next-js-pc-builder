@@ -54,7 +54,7 @@ function ProductDetailPage({ product }) {
   return (
     <Layout>
       <section className="my-16">
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card card-side bg-base-100 shadow-xl grid grid-cols-1 md:grid-cols-[45fr_55fr]">
           <figure className="p-2">
             <Image
               src={product?.image}

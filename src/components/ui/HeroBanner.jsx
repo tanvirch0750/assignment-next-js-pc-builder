@@ -14,10 +14,10 @@ function HeroBanner() {
       <div className="hero-overlay bg-opacity-70"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-2xl">
-          <h1 className="mb-5 text-5xl font-bold">
+          <h1 className="mb-5 text-3xl md:text-5xl font-bold">
             Tech Wizardry Unleashed Build Your PC Kingdom Today!
           </h1>
-          <p className="mb-5 text-lg">
+          <p className="mb-5 text:md md:text-lg">
             Welcome to the Epicenter of PC Mastery, where Your Imagination Meets
             Innovation. Discover our cutting-edge tools and expert guidance to
             create a personalized PC that defines your style and surpasses your
