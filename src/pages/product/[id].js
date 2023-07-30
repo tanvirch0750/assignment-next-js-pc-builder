@@ -1,7 +1,56 @@
 import Layout from '@/components/ui/Layout';
+import { useSession } from 'next-auth/react';
+import dynamic from 'next/dynamic';
+
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+const StarRating = dynamic(() => import('@/components/ui/StarRating'), {
+  ssr: false,
+});
 
 function ProductDetailPage({ product }) {
+  const [userRating, setUserRating] = useState('');
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    const updateRating = async () => {
+      try {
+        if (userRating > Number(0)) {
+          const response = await fetch(
+            `https://pc-builder-backend-three.vercel.app/api/v1/product/${product?.id}`,
+            {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ individualRating: Number(userRating) }),
+            }
+          );
+          if (response?.ok) {
+            alert('Rating updated successfully');
+          }
+
+          setUserRating('');
+        }
+      } catch (error) {}
+    };
+
+    updateRating();
+  }, [userRating, product]);
+
+  const handleRatingUpdate = async () => {
+    // Calculate the new rating (for simplicity, just increasing the rating by 1)
+    const newRating = rating + 1;
+
+    // Send the PATCH request to update the rating
+
+    if (response.ok) {
+      // Update the rating in the state and on the UI
+      setRating(newRating);
+    }
+  };
+
   return (
     <Layout>
       <section className="my-16">
@@ -25,7 +74,12 @@ function ProductDetailPage({ product }) {
               </p>
               <p className="text-lg">Price: ${product?.price}</p>
               <p className="text-lg">Status: {product?.status}</p>
-              <p className="text-lg">Rating: {product?.averageRating}/5</p>
+              <p className="text-lg ">
+                Average Rating:{' '}
+                <span className="px-2 bg-yellow-300 rounded-full">
+                  {product?.averageRating?.toFixed(1)}/5
+                </span>
+              </p>
             </div>
             <div>
               <h2 className="text-xl font-semibold mb-1">Key Features</h2>
@@ -37,6 +91,18 @@ function ProductDetailPage({ product }) {
                 ))}
               </div>
             </div>
+            {session?.user && (
+              <div>
+                <p className="flex items-center gap-2 text-lg">
+                  Give rating:{' '}
+                  <StarRating
+                    size={24}
+                    onSetRating={setUserRating}
+                    maxRating={5}
+                  />
+                </p>
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-12">
