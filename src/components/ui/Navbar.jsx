@@ -82,7 +82,7 @@ function Navbar() {
         {session?.user ? (
           <>
             <Link href="/pcBuilder" className="btn btn-primary">
-              Build PC
+              PC Builder
             </Link>
 
             <button onClick={() => signOut()} className="btn btn-error">
