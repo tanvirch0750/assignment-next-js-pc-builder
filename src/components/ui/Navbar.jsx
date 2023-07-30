@@ -1,8 +1,10 @@
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 function Navbar() {
   const [categories, setCategories] = useState([]);
+  const { data: session } = useSession();
 
   useEffect(() => {
     async function fetchCategories() {
@@ -76,10 +78,22 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <Link href="/pcBuilder" className="btn btn-primary">
-          Build PC
-        </Link>
+      <div className="navbar-end flex gap-2">
+        {session?.user ? (
+          <>
+            <Link href="/pcBuilder" className="btn btn-primary">
+              Build PC
+            </Link>
+
+            <button onClick={() => signOut()} className="btn btn-error">
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link href="/login" className="btn btn-primary">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
