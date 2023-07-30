@@ -49,5 +49,5 @@ export const getStaticProps = async () => {
   const featuredCategory = category.data.filter(
     (category) => category.featured === true
   );
-  return { props: { featuredProducts, featuredCategory } };
+  return { props: { featuredProducts, featuredCategory }, revalidate: 1000 };
 };

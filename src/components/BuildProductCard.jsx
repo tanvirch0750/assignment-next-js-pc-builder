@@ -35,7 +35,9 @@ function BuildProductCard({ product }) {
         </p>
         <p className="text-lg">Price: ${product?.price}</p>
         <p className="text-lg">Status: {product?.status}</p>
-        <p className="text-lg">Rating: {product?.averageRating}/5</p>
+        <p className="text-lg">
+          Rating: {product?.averageRating?.toFixed(1)}/5
+        </p>
         <div className="card-actions justify-end">
           <button
             disabled={disabled}
