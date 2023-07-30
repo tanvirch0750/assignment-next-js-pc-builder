@@ -1,38 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Website link: https://pc-building-frontend.vercel.app/
 
-## Getting Started
+## Github link: https://github.com/tanvirch0750/assignment-next-js-pc-builder
 
-First, run the development server:
+## Website feature
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- This is a website where user can simulate pc building, how much it cost for building before build their pc
+- A user can see diffrent components of pc and see details of them
+- A user can also login and logout
+- A logged in user can give review
+- Only a logged in user can build pc
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Navigate this project
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- In the navbar there is a category dropdown menu where you can select diffrent category and it will show corresponding component regarding that category. You can also navigate to login and pc builder page (logged in user) from navbar.
+- In the home page there is banner, in the banner there is a pc build btn, you can also go to pc build page by clicking this button if you are logged in. There is also fetrued products and featured category section in the home page.
+- You can see details of a product by clicking detail button and can seel all the component of specific category by clcickig exploring button
+- For building PC you can click the specific category, then it will show the all component regarding that category, select one then it will navigate to pc builder page, your selected product will be added there, if you want to remove it you can click remove button
+- For complete the pc building you have to select component atleast from this categories, 'CPU', 'Motherboard', 'RAM', 'Power Supply Unit', 'Storage Device'
+- After completing building you can hit complete button
+- You can login into the website using your google and github account
