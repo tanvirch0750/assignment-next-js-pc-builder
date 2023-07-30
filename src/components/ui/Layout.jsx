@@ -1,9 +1,9 @@
 import Navbar from './Navbar';
 
-function Layout({ children, pageName }) {
+function Layout({ children, pageName, categories }) {
   return (
     <div>
-      <Navbar />
+      <Navbar pageName={pageName} categories={categories} />
       {pageName === 'home' ? (
         <>{children}</>
       ) : (

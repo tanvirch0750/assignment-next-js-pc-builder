@@ -3,9 +3,13 @@ import FeaturedProductCard from '@/components/FeaturedProductCard';
 import HeroBanner from '@/components/ui/HeroBanner';
 import Layout from '@/components/ui/Layout';
 
-export default function Home({ featuredProducts, featuredCategory }) {
+export default function Home({
+  featuredProducts,
+  featuredCategory,
+  categories,
+}) {
   return (
-    <Layout pageName="home">
+    <Layout pageName="home" categories={categories}>
       <HeroBanner />
       <main className="min-h-screen mx-auto max-w-7xl px-3 py-8 md:py-12">
         <section>
@@ -49,5 +53,9 @@ export const getStaticProps = async () => {
   const featuredCategory = category.data.filter(
     (category) => category.featured === true
   );
-  return { props: { featuredProducts, featuredCategory }, revalidate: 1000 };
+  const categories = category.data;
+  return {
+    props: { featuredProducts, featuredCategory, categories },
+    revalidate: 1000,
+  };
 };

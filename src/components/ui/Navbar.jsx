@@ -2,8 +2,9 @@ import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-function Navbar() {
+function Navbar({ pageName, categories: categories2 }) {
   const [categories, setCategories] = useState([]);
+
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -43,16 +44,24 @@ function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Categories</a>
-              <ul className="p-2 z-10">
-                {categories?.data?.map((category) => (
-                  <li key={category?.id}>
-                    <Link href={`/${category?.id}`}>{category?.category}</Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
+            {pageName !== 'builder' && (
+              <li tabIndex={0}>
+                <details>
+                  <summary className="text-lg font-semibold">
+                    Categories
+                  </summary>
+                  <ul className="p-2 z-10 w-80">
+                    {categories2?.map((category) => (
+                      <li key={category?.id}>
+                        <Link href={`/${category?.id}`}>
+                          {category?.category}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            )}
           </ul>
         </div>
         <Link
@@ -64,18 +73,22 @@ function Navbar() {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li tabIndex={0}>
-            <details>
-              <summary className="text-lg font-semibold">Categories</summary>
-              <ul className="p-2 z-10 w-80">
-                {categories?.data?.map((category) => (
-                  <li key={category?.id}>
-                    <Link href={`/${category?.id}`}>{category?.category}</Link>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          </li>
+          {pageName !== 'builder' && (
+            <li tabIndex={0}>
+              <details>
+                <summary className="text-lg font-semibold">Categories</summary>
+                <ul className="p-2 z-10 w-80">
+                  {categories?.data?.map((category) => (
+                    <li key={category?.id}>
+                      <Link href={`/${category?.id}`}>
+                        {category?.category}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end flex gap-2">
