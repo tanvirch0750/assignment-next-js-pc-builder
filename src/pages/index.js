@@ -12,7 +12,7 @@ export default function Home({ featuredProducts, featuredCategory }) {
           <h1 className="text-center text-4xl text-primary font-medium">
             Featured Components
           </h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             {featuredProducts?.map((product) => (
               <FeaturedProductCard key={product.id} product={product} />
             ))}
@@ -22,7 +22,7 @@ export default function Home({ featuredProducts, featuredCategory }) {
           <h1 className="text-center text-4xl text-primary font-medium">
             Featured Categories
           </h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             {featuredCategory?.map((category) => (
               <FeaturedCategoryCard category={category} key={category.id} />
             ))}

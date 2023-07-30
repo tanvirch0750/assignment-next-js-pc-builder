@@ -6,20 +6,42 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function PcBuilderPage({ allCategories }) {
   const addedProducts = useSelector((state) => state.addedProducts);
-
+  const router = useRouter();
   const dispatch = useDispatch();
+
+  const desiredCategories = [
+    'CPU',
+    'Motherboard',
+    'RAM',
+    'Power Supply Unit',
+    'Storage Device',
+  ];
+
+  const disabled = !desiredCategories.every((category) =>
+    addedProducts.some((obj) => obj.category.category === category)
+  );
+
+  const totalPrice = addedProducts.reduce(
+    (acc, product) => acc + Number(product.price),
+    0
+  );
 
   const isCategoryAdded = (categoryId) =>
     addedProducts.some((product) => product.category.id === categoryId);
 
-  const router = useRouter();
+  const handleComplete = () => {
+    if (!disabled) {
+      alert('Congratulation, you successfully build your computer');
+    }
+  };
+
   return (
     <Layout>
       <section className="my-16">
         <h1 className="text-center text-4xl text-primary font-medium">
           Build Your PC
         </h1>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
           {allCategories?.map((category) => (
             <button
               className="btn btn-primary"
@@ -79,6 +101,19 @@ function PcBuilderPage({ allCategories }) {
             </tbody>
             {/* foot */}
           </table>
+        </div>
+
+        <div className="grid grid-cols-2 gap-20 mt-12">
+          <h2 className="text-center text-2xl text-primary font-medium">
+            Total Price: {totalPrice} Taka
+          </h2>
+          <button
+            disabled={disabled}
+            onClick={handleComplete}
+            className="btn btn-primary"
+          >
+            Complete
+          </button>
         </div>
       </section>
     </Layout>

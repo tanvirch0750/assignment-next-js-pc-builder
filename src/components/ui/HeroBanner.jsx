@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 function HeroBanner() {
   return (
     <div
@@ -21,7 +23,9 @@ function HeroBanner() {
             create a personalized PC that defines your style and surpasses your
             expectations.
           </p>
-          <button className="btn btn-primary">Build PC</button>
+          <Link href="/pcBuilder" className="btn btn-primary">
+            Build PC
+          </Link>
         </div>
       </div>
     </div>

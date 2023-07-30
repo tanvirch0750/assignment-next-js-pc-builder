@@ -13,7 +13,7 @@ function CategoryPage({ categoryProducts }) {
           <h1 className="text-center text-4xl text-primary font-medium">
             {categoryProducts[0].category.category}
           </h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             {categoryProducts?.map((product) => (
               <FeaturedProductCard key={product.id} product={product} />
             ))}
